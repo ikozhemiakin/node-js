@@ -1,0 +1,14 @@
+{
+  "name": "js.local",
+  "version": "1.0.0",
+  "description": "db conect ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
