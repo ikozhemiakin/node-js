@@ -1,11 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            {{#each users}}
+            {{#each pages}}
                 <div class="alert alert-success" role="alert">
-                    <strong>ID:{{this.id}}</strong> - Name: {{this.name}}
+                    <strong>ID:{{this.id}}</strong> - Name: {{this.pageName}} - Description: {{this.pageDescription}}  - URL: {{this.url}}
                 </div>
             {{/each}}
+            <div>{{setNoResults}}</div>
         </div>
     </div>
 </div>
