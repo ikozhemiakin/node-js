@@ -1,10 +1,9 @@
 'use strict';
 const express = require("express");
 const exphbs = require('express-handlebars');
-// const hbs1 = require("hbs");
 const mysql = require('mysql');
 const bodyParser = require("body-parser");
-const search = require("./search");
+
 const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 const PORT = process.env.PORT || 3000
@@ -18,7 +17,6 @@ const hbs = exphbs.create({
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
-global.search1 = new search();
 
 // hbs1.registerHelper("setNoResults", function () {
 //     console.log(result);
@@ -31,10 +29,6 @@ global.search1 = new search();
 //             '</td></tr></table>';
 //     }
 // });
-
-app.engine('hbs', hbs.engine)
-app.set('view engine', 'hbs')
-app.set('views', 'views')
 
 let connection = mysql.createConnection({
     host: 'localhost',
@@ -49,24 +43,46 @@ app.get('/', function (req, res) {
 
 
 app.post('/result', urlencodedParser, function (req, res) {
-
     if (!req.body) return res.sendStatus(400);
-
     var entry = req.body.pageName;
-    var reentry = search1.validate(entry);
+
+
     connection.query('SELECT * FROM profiles WHERE pageName="' + entry + '"', function (error, data) {
+
         if (error) throw error;
-        if ((data.length != 0) && (entry != "url: html")) {
-            res.render("result", {
-                pages: data
-            });
-        } else if ((data.length == 0) && (entry != "url: html")) {
+        if ((data.length == 0) && (entry != "url: html")) {
             res.render("no-results");
         } else if (entry == "url: html") {
             connection.query('SELECT * FROM profiles', function (error, data) {
                 res.render("url-html", {
                     urls: data
                 });
+            });
+        }
+    });
+});
+app.get('/result', urlencodedParser, function (req, res) {
+    var page = req.body.page;
+    var numPerPage = 10;
+    var skip = (page-1) * numPerPage;
+    var limit = skip + ',' + numPerPage; // Here we compute the LIMIT parameter for MySQL query
+    connection.query('SELECT count(*) as numRows FROM profiles',function (err, rows, fields) {
+        if(err) {
+            console.log("error: ", err);
+        }else{
+            var numRows = rows[0].numRows;
+            var numPages = Math.ceil(numRows / numPerPage);
+            connection.query('SELECT * FROM profiles LIMIT ' + limit,function (err, rows, fields) {
+                if(err) {
+                    console.log("error: ", err);
+                }else{
+
+                    console.log(rows)
+                    // result(null, rows,numPages);
+                    res.render("result", {
+                        pages: rows
+                    });
+                }
             });
         }
     });
