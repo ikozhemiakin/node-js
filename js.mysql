@@ -40,7 +40,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
-INSERT INTO `profiles` VALUES (1,'jslocal',1,'errors','http://js.local/index.html'),(2,'jslocal',2,'jslocal','http://js.local/');
+INSERT INTO `profiles` VALUES (1,'jslocal',1,'errors','http://js.local/index.html'),(2,'jslocal',2,'jslocal','http://js.local/'),(3,'jslocal',3,'jslocal','http://js.local/'),(4,'jslocal',4,'jslocal','http://js.local/'),(5,'jslocal',5,'jslocal','http://js.local/'),(6,'jslocal',6,'jslocal','http://js.local/'),(7,'jslocal',7,'jslocal','http://js.local/'),(8,'jslocal',8,'jslocal','http://js.local/'),(9,'jslocal',9,'jslocal','http://js.local/'),(10,'jslocal',10,'jslocal','http://js.local/'),(11,'jslocal',11,'ERRORS','http://js.local/');
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-08 18:23:54
+-- Dump completed on 2020-10-10 10:13:59
