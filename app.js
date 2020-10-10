@@ -64,22 +64,24 @@ app.post('/result', urlencodedParser, function (req, res) {
 app.get('/result', urlencodedParser, function (req, res) {
     var page = req.body.page;
     var numPerPage = 10;
-    var skip = (page-1) * numPerPage;
+    var skip = (page - 1) * numPerPage;
     var limit = skip + ',' + numPerPage; // Here we compute the LIMIT parameter for MySQL query
-    connection.query('SELECT count(*) as numRows FROM profiles',function (err, rows, fields) {
-        if(err) {
+    connection.query('SELECT count(*) as numRows FROM profiles', function (err, rows, fields) {
+        if (err) {
             console.log("error: ", err);
-        }else{
+        } else {
             var numRows = rows[0].numRows;
             var numPages = Math.ceil(numRows / numPerPage);
-            connection.query('SELECT * FROM profiles LIMIT ' + limit,function (err, rows, fields) {
-                if(err) {
+            connection.query('SELECT * FROM profiles LIMIT ' + limit, function (err, rows, fields) {
+                if (err) {
                     console.log("error: ", err);
-                }else{
+                } else {
 
                     console.log(rows)
                     // result(null, rows,numPages);
                     res.render("result", {
+                        firstPage: 1,
+                        numPages: numPages,
                         pages: rows
                     });
                 }
