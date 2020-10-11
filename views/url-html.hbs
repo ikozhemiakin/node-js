@@ -8,10 +8,7 @@
             {{/each}}
         </div>
         <div class="pagination">
-            <input type="button" id="next" onclick="" value="Next 10 results">
-            <a href="?page=1">{{this.firstPage}}</a>
-            <a href="?page=2">{{this.numPages}}</a>
-            <input type="button" id="prev" onclick="" value="Previous 10 results">
+            {{{paginateHelper pagination}}}
         </div>
     </div>
 </div>
