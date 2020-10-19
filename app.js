@@ -1,1 +1,1 @@
-const magazine = require("magazine");
+require("./magazine/index.js");

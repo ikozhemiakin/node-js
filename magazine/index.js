@@ -25,14 +25,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '',
     database: 'js',
     multipleStatements: true,
 });
 
 app.get('/', function (req, res) {
 
-    connection.query('SELECT * FROM products where id = 1;SELECT * FROM categories where id = 1', function (error, data) {
+    connection.query('SELECT * FROM products where id = 1; SELECT * FROM categories where id = 1', function (error, data) {
         console.log(data);
         res.render('form', {products: data[0], categories: data[1]});
     });
