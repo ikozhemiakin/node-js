@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'root',
     database: 'js',
     multipleStatements: true,
 });
@@ -33,8 +33,7 @@ let connection = mysql.createConnection({
 app.get('/', function (req, res) {
 
     connection.query('SELECT * FROM products where id = 1; SELECT * FROM categories where id = 1', function (error, data) {
-        console.log(data);
-        res.render('form', {products: data[0], categories: data[1]});
+        res.render('form', {products: data[0], categories: data[0][1]});
     });
 
 });
@@ -52,6 +51,7 @@ app.get('/result', function (req, res) {
     }
     console.log(entry);
     connection.query('SELECT * FROM profiles WHERE pageName="' + entry + '" LIMIT ' + limit + '; SELECT COUNT(1) FROM profiles', function (error, data) {
+
         let totalRows = data[1][0]['COUNT(1)'];
         if (error) throw error;
         if ((data[0].length == 0) && (entry != "url: html")) {
