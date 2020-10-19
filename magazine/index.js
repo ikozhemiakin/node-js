@@ -33,7 +33,7 @@ let connection = mysql.createConnection({
 app.get('/', function (req, res) {
 
     connection.query('SELECT * FROM products where id = 1; SELECT * FROM categories where id = 1', function (error, data) {
-        res.render('form', {products: data[0], categories: data[0][1]});
+        res.render('form', {products: data[0], categories: data[1]});
     });
 
 });
