@@ -16,6 +16,59 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `description` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (0,'Appliances','Kitchen machines to make life easier'),(1,'Buildings','Architectural structures'),(2,'Clothing','Fashionably questionable apparel'),(3,'Electronics','Nifty gizmos that drain your wallet'),(4,'Food','The best product to order over the Net'),(5,'Hardware','All kinds of general purpose'),(6,'Music','The hottest new instruments.');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `description` varchar(45) NOT NULL,
+  `price` varchar(45) NOT NULL,
+  `unit` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products`
+--
+
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,0,'Hairdryer','Fancy yellowish blast and durable cord.','1.15','pair'),(2,0,'Hairdryer','Fancy yellowish blast and durable cord.','1.15','each'),(3,0,'Oven','Oven pastel design.','865.78','each'),(4,0,'Radio','Radio design.','15.43','each'),(5,0,'Toaster','Toaster pastel design.','25.78','each'),(6,0,'Washer','Washer pastel design.','345.61','each'),(7,1,'Barn','Complite with rusty silo...','2630.37','each'),(8,1,'Meriya','Chernihiv meriya','1000000.15','each'),(9,1,'Souz','Magazine of products.','86500.78','each'),(10,1,'Holliwood','Magazie.','1500000.43','each'),(11,1,'Marconi','Pizza.','250000.78','each'),(12,1,'Vena','Magazine.','3450000.61','pair'),(13,2,'Bowtle','Bowtle','25.37','five'),(14,2,'Necktie','Necktie','10.15','each'),(15,2,'Purse','Purse.','86.78','each'),(16,2,'Jacket','Jacket.','150.43','each'),(17,2,'Glove','Glove.','25.78','each'),(18,2,'Watch','Watch.','345','pair'),(19,3,'Cheese','cheese','10','each'),(20,3,'Eggs','eggs','1','each'),(21,3,'Drumstick','drumstick','20','each'),(22,3,'Chips','Chips.','15','each'),(23,3,'Glove','Glove.','25.78','each'),(24,3,'Shrimp','Shrimp.','25','each'),(25,4,'Chainsaw','Chainsaw','226','each'),(26,4,'Cycle','Cycle','11.15','each'),(27,4,'Hammer','Hammer','9.78','each'),(28,4,'Lawnmower','Lawnmower.','165.43','each'),(29,4,'Pliers','Pliers.','6.78','each'),(30,4,'Stake','Stake.','3.95','pair'),(31,5,'Bongos','Bongos','22','bongo'),(32,5,'Piano','Piano','1001.15','each'),(33,5,'Notes','Notes','2.78','note'),(34,5,'Guitar','Guitar.','241.43','each'),(35,5,'Trumpet','Trumpet.','683.78','each');
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `profiles`
 --
 
@@ -53,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-10 10:13:59
+-- Dump completed on 2020-10-19 11:43:01
