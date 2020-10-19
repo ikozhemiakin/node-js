@@ -8,16 +8,25 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            {{#each products}}
+                <table cellpadding="3">
+                    <tr>
+                        <td valign="top" colspan="2">
+                            <font face="Tahoma">
+                                <h2>Shopping Bag:
+                                {{#each categories}}
+                                    {{this.name}}
+                                {{/each}}
+                                    <I>
+                                        <B>Name: </B>{{this.name}}<br>
+                                        <B>Description</B>: {{this.description}}<br>
+                                        <B>Price</B>: {{this.price}}<br>
+                                    </I>
+                                </h2></font>
+                        </td>
+                    </tr>
+                </table>
+            {{/each}}
         </div>
     </div>
 </div>
-<table>
-    <tr>
-        <th>To search...</th>
-        <th>Enter...</th>
-        <th>For example...</th>
-    </tr>
-    <tr><td>Any terms</td><td>words with spaces</td><td>JavaScript application</td></tr>
-    <tr><td>All terms</td><td>+[words with spaces]</td><td>+JavaScript application</td></tr>
-    <tr><td>By URL</td><td>url:[urlportions with spaces]</td><td>url: html</td><</tr>
-</table>
