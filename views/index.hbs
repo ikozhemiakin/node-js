@@ -1,33 +1,45 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <form action="/result" method="get">
+            {{> menu}}
+        </div>
+        <div class="col-12">
+            <form action="/index" method="get">
                 <div class="form-group">
                     <label for="pageName">Name</label>
                     <input type="text" class="form-control" name="pageName" id="pageName" placeholder="PageName">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-
-            <table cellpadding="3">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table cellpadding="3" style="position: absolute; top: 100;">
                 <tr>
-                    <td valign="top" colspan="2">
-                        <font face="Tahoma">
-                            <h2>Shopping Bag:<br>
+                    <td nowrap="nowrap" valign="top" colspan="2">
+                            <font face="Tahoma">
                                 {{#each categories}}
-                                    {{this.name}}<br>
+                                    <h2>{{this.name}}</h2><br>
                                 {{/each}}
                                 {{#each products}}
                                     <I>
                                         <B>Name: </B>{{this.name}}<br>
                                         <B>Description</B>: {{this.description}}<br>
-                                        <B>Price</B>: {{this.price}}<br>
-                                    </I>
+                                        <B>Price</B>: {{this.price}}$<br>
+                                        <button type="submit" class="btn btn-primary">Buy</button>
+                                    </I><br>
                                 {{/each}}
-                            </h2>
-                        </font>
+                            </font>
                     </td>
                 </tr>
+                <tfoot>
+                <tr>
+                    <td>
+                        {{{paginateHelper pagination}}}
+                    </td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>

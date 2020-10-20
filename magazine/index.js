@@ -29,11 +29,25 @@ let connection = mysql.createConnection({
     database: 'js',
     multipleStatements: true,
 });
+app.get('/', function (req, res) {
+    connection.query('SELECT * FROM categories', function (error, data) {
+        res.render('home', {categories: data});
+    });
+});
 
 app.get('/', function (req, res) {
+    let page = req.query.page;
+    if (!page) page = 1
+    let entry = req.query.pageName;
+    let numPerPage = 5;
+    let skip = (page - 1) * numPerPage;
+    let limit = skip + ',' + numPerPage;
+    // console.log('SELECT * FROM products LIMIT ' + limit + ');
+    connection.query('SELECT * FROM products LIMIT ' + limit + '; SELECT * FROM categories where id=0; SELECT COUNT(1) FROM products', function (error, data) {
+        let totalRows = data[2][0]['COUNT(1)'];
+        console.log(totalRows);
+        res.render('form', {products:data[0], categories: data[1], pagination: {page: page, limit: numPerPage, totalRows: totalRows}});
 
-    connection.query('SELECT * FROM products where id = 1; SELECT * FROM categories where id = 1', function (error, data) {
-        res.render('form', {products: data[0], categories: data[1]});
     });
 
 });

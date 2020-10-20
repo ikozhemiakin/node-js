@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <h2>Categories:</h2>
+        <div class="col-12">
+            {{#each categories}}
+                <div class="alert alert-success" role="alert">
+                    <a href="/?categoryId={{this.id}} "> - Description: {{this.pageDescription}}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
