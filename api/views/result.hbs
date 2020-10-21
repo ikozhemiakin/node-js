@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {{#each pages}}
+                <div class="alert alert-success" role="alert">
+                    <strong>ID:{{this.id}}</strong> - Name: {{this.pageName}} - Description: {{this.pageDescription}}  - URL: {{this.url}}
+                </div>
+            {{/each}}
+        </div>
+        <div class="pages">
+            <p>
+                <strong>Pagination:</strong>
+            </p>
+            <div class="pagination">
+                {{{paginateHelper pagination}}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form action="/index" method="get">
+                <div class="form-group">
+                    <label for="pageName">Search</label>
+                    <input type="text" class="form-control" name="pageName" id="pageName" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-12">
+            {{> menu}}
+        </div>
+    </div>
+</div>
