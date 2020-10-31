@@ -50,11 +50,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/testAPI", testAPIRouter);
-app.listen(PORT, () => console.log("Backend server live on " + PORT));
 
 app.get('/', function (req, res) {
-    connection.query('SELECT * FROM categories', function (error, data) {
-
+    connection.query('SELECT * FROM categories; ', function (error, data) {
+        console.log(data);
         res.send({ categories: data });
     });
 });
@@ -79,5 +78,6 @@ app.use(function(err, req, res, next) {
     res.render("error");
 });
 
+app.listen(PORT, () => console.log("Backend server live on " + PORT));
 
 module.exports = app;
